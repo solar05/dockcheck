@@ -7,7 +7,7 @@ RSpec.describe DockCheck::Inn do
   let(:twelve_digit_valid_inn) { "732897853530" }
   let(:twelve_digit_invalid_inn) { "732897853531" }
 
-  it "check inn correctly" do
+  it "checks inn correctly" do
     expect(checker.check(ten_digit_valid_inn)).to be true
     expect(checker.check(ten_digit_invalid_inn)).to be false
 
