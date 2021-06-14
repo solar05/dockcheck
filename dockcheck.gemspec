@@ -8,6 +8,8 @@ Gem::Specification.new do |s|
   s.files       = ["lib/dockcheck.rb",
                    "lib/dockcheck/inn.rb"]
   s.require_paths = ["lib"]
+  s.required_ruby_version = Gem::Requirement.new(">= 2.7.0")
+  s.add_development_dependency "rspec"
   s.homepage    =
     'https://rubygems.org/gems/dockcheck'
   s.license       = 'MIT'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DockCheck
   @current_checker
 
@@ -6,8 +8,8 @@ class DockCheck
     self
   end
 
-  def check(doc)
-    @current_checker.check(doc)
+  def check(numbers)
+    @current_checker.check(numbers)
   end
 
   def change_checker(checker)

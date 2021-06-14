@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DockCheck::Inn
   def check(numbers)
     inn = prepare_inn(numbers)
@@ -13,7 +15,7 @@ class DockCheck::Inn
 
   private
   def prepare_inn(numbers)
-    []
+    numbers.split('')
   end
 
   def ten_digit_inn_valid?(inn)
