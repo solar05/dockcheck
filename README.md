@@ -2,7 +2,7 @@
 Simple gem, that validates document check sum.
 
 ## Install
-gem install dockcheck
+`gem install dockcheck`
 
 ### Examples
 `checker = DockCheck.new(:inn)`  
