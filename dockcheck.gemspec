@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'dockcheck'
-  s.version     = '1.0.1'
+  s.version     = '1.1.0'
   s.summary     = "Document checksum validator."
   s.description = "A simple document checksum validator"
   s.authors     = ["Artem Solomatin"]
