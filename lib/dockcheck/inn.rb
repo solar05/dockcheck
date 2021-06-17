@@ -5,7 +5,7 @@ class DockCheck::Inn
   @@twelve_digits_first_map = [7, 2, 4, 10, 3, 5, 9, 4, 6, 8]
   @@twelve_digits_second_map = [3, 7, 2, 4, 10, 3, 5, 9, 4, 6, 8]
 
-  def check(numbers)
+  def check(numbers, _)
     inn = prepare_inn(numbers)
     case inn.count
     when 10

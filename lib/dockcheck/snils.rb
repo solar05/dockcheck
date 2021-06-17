@@ -3,7 +3,7 @@
 class DockCheck::Snils
   @@coefficients_map = [9, 8, 7, 6, 5, 4, 3, 2, 1]
 
-  def check(numbers)
+  def check(numbers, _)
     snils = prepare_snils(numbers)
     case snils.count
     when 11

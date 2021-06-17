@@ -8,8 +8,8 @@ class DockCheck
     self
   end
 
-  def check(numbers)
-    @current_checker.check(numbers)
+  def check(numbers, *other_data)
+    @current_checker.check(numbers, *other_data)
   end
 
   def change_checker(checker)
