@@ -3,7 +3,7 @@ Simple gem, that validates document check sum.
 
 ## Install
 `gem install dockcheck`
-or using Gemfile `gem 'dockcheck', '~> 1.0'`
+or using Gemfile `gem 'dockcheck', '~> 1.1'`
 
 ### Examples
 `checker = DockCheck.new(:inn)`  
