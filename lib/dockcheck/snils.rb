@@ -14,6 +14,10 @@ class DockCheck::Snils
     end
   end
 
+  def name
+    :snils
+  end
+
   private
   def prepare_snils(numbers)
     numbers.split('').map { |n| n.to_i }

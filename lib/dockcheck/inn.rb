@@ -17,6 +17,10 @@ class DockCheck::Inn
     end
   end
 
+  def name
+    :inn
+  end
+
   private
   def prepare_inn(numbers)
     numbers.split('').map { |n| n.to_i }

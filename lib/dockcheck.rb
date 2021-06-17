@@ -17,6 +17,10 @@ class DockCheck
     self
   end
 
+  def current_checker
+    @current_checker.name()
+  end
+
   private
   def dispatch(checker)
     checkers_map = {inn: Inn, snils: Snils}

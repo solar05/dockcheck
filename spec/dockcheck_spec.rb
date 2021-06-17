@@ -10,4 +10,8 @@ RSpec.describe DockCheck do
 
     expect(checker.check("12345434343")).to be false
   end
+
+  it 'return name of current checker' do
+    expect(checker.current_checker).to be :snils
+  end
 end
