@@ -33,6 +33,5 @@ class DockCheck
   end
 end
 
-require 'dockcheck/inn'
-require 'dockcheck/snils'
-require 'dockcheck/bik'
+Dir[File.join(__dir__, 'dockcheck', '*.rb')].each { |file| require file }
+
