@@ -23,7 +23,7 @@ class DockCheck
 
   private
   def dispatch(checker)
-    checkers_map = {inn: Inn, snils: Snils}
+    checkers_map = {inn: Inn, snils: Snils, bik: Bik}
 
     if checkers_map.key?(checker.to_sym)
       @current_checker = checkers_map[checker].new
@@ -35,3 +35,4 @@ end
 
 require 'dockcheck/inn'
 require 'dockcheck/snils'
+require 'dockcheck/bik'

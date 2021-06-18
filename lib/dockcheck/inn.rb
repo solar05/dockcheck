@@ -23,7 +23,7 @@ class DockCheck::Inn
 
   private
   def prepare_inn(numbers)
-    numbers.split('').map { |n| n.to_i }
+    numbers.split('').map(&:to_i)
   end
 
   def control_sum_calc(inn, coefficients)
