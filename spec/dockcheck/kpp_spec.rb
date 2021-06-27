@@ -7,7 +7,7 @@ RSpec.describe DockCheck::Kpp do
   let(:invalid_kpp_1) { "123456?!@" }
   let(:invalid_kpp_2) { "a123fv413" }
 
-  it "checks bik correctly" do
+  it "checks kpp correctly" do
     expect(checker.check(valid_kpp_1, [])).to be true
     expect(checker.check(valid_kpp_2, [])).to be true
     expect(checker.check(invalid_kpp_1, [])).to be false

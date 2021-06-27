@@ -23,7 +23,7 @@ class DockCheck
 
   private
   def dispatch(checker)
-    checkers_map = {inn: Inn, snils: Snils, bik: Bik, kpp: Kpp}
+    checkers_map = {inn: Inn, snils: Snils, bik: Bik, kpp: Kpp, ogrnip: Ogrnip}
 
     if checkers_map.key?(checker.to_sym)
       @current_checker = checkers_map[checker].new
