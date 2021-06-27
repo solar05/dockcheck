@@ -16,9 +16,6 @@ class DockCheck::Bik
   end
 
   private
-  def prepare_bik(numbers)
-    numbers.split('').map(&:to_i)
-  end
 
   def bik_valid?(bik)
     bik.scan(/\D/).empty?
