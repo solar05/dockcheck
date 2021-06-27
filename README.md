@@ -3,9 +3,15 @@ Simple gem, that validates document check sum.
 
 ## Install
 `gem install dockcheck`
-or using Gemfile `gem 'dockcheck', '~> 1.1'`
+or using Gemfile `gem 'dockcheck', '~> 1.3', '>= 1.3.1'`
 
-### Examples
+### Validators list
+- INN
+- BIK
+- KPP
+- SNILS
+
+#### Examples
 `checker = DockCheck.new(:inn)`  
 `checker.check('12345433434', []) # => false`  
 `checker.check('7743013901', []) # => true`  
