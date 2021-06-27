@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'dockcheck'
-  s.version     = '1.4.0'
+  s.version     = '1.5.0'
   s.summary     = "Document checksum validator."
   s.description = "A simple document checksum validator"
   s.authors     = ["Artem Solomatin"]
@@ -10,7 +10,8 @@ Gem::Specification.new do |s|
                    "lib/dockcheck/snils.rb",
                    "lib/dockcheck/bik.rb",
                    "lib/dockcheck/kpp.rb",
-                   "lib/dockcheck/ogrnip.rb"
+                   "lib/dockcheck/ogrnip.rb",
+                   "lib/dockcheck/ogrn.rb"
                   ]
   s.require_paths = ["lib"]
   s.required_ruby_version = Gem::Requirement.new(">= 2.7.0")

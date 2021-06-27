@@ -10,6 +10,8 @@ or using Gemfile `gem 'dockcheck', '~> 1.3', '>= 1.3.1'`
 - BIK
 - KPP
 - SNILS
+- OGRN
+- OGRNIP
 
 #### Examples
 `checker = DockCheck.new(:inn)`  
