@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
+require "#{__dir__}/dockhelper.rb"
+
 class DockCheck::Inn
   @@ten_digits_map = [2, 4, 10, 3, 5, 9, 4, 6, 8]
   @@twelve_digits_first_map = [7, 2, 4, 10, 3, 5, 9, 4, 6, 8]
   @@twelve_digits_second_map = [3, 7, 2, 4, 10, 3, 5, 9, 4, 6, 8]
 
   def check(numbers, _)
-    inn = prepare_inn(numbers)
+    inn = DockHelper.numberize_document(numbers)
     case inn.count
     when 10
       ten_digit_inn_valid?(inn)
@@ -22,9 +24,6 @@ class DockCheck::Inn
   end
 
   private
-  def prepare_inn(numbers)
-    numbers.split('').map(&:to_i)
-  end
 
   def control_sum_calc(inn, coefficients)
     inn

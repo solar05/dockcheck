@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
+require "#{__dir__}/dockhelper.rb"
+
 class DockCheck::Snils
   @@coefficients_map = [9, 8, 7, 6, 5, 4, 3, 2, 1]
 
   def check(numbers, _)
-    snils = prepare_snils(numbers)
+    snils = DockHelper.numberize_document(numbers)
     case snils.count
     when 11
       last_digits = numbers.slice(9, 10).to_i
@@ -19,9 +21,6 @@ class DockCheck::Snils
   end
 
   private
-  def prepare_snils(numbers)
-    numbers.split('').map(&:to_i)
-  end
 
   def control_sum_calc(inn, coefficients)
     inn

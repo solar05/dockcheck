@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
+require "#{__dir__}/dockhelper.rb"
+
 class DockCheck::Ogrnip
 
   def check(ogrnip, _)
     case ogrnip.length
     when 15
-      if only_digits?(ogrnip)
+      if DockHelper.only_digits?(ogrnip)
         ogrnip_valid?(ogrnip)
       else
         false
@@ -20,10 +22,6 @@ class DockCheck::Ogrnip
   end
 
   private
-
-  def only_digits?(ogrnip)
-    ogrnip.scan(/\D/).empty?
-  end
 
   def ogrnip_valid?(ogrnip)
     first_code = ogrnip[0..13].to_i
