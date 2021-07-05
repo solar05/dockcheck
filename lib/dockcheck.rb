@@ -11,11 +11,23 @@ class DockCheck
   def check(data)
     doc = DockHelper.prepare_doc(data)
     checker = doc[:type]
-    if @checkers_map.key?(checker.to_sym)
-      @checkers_map[checker].check(doc)
+    result = doc
+
+    if checker
+      if @checkers_map.key?(checker.to_sym)
+        if doc[:content]
+          result = @checkers_map[checker].check(doc)
+        else
+          result[:error] = 'Content field required!'
+        end
+      else
+        result[:error] = 'Incorrect checker!'
+      end
     else
-      raise 'Incorrect checker!'
+      result[:error] = 'Document type field required!'
     end
+
+    result
   end
 
   def check_many(documents)
