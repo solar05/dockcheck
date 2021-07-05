@@ -23,6 +23,10 @@ RSpec.describe DockCheck do
     expect(checker.check({})).to eq({correct: false, error: "Document type field required!"})
   end
 
+  it 'return error if type not presented' do
+    expect(checker.check({})).to eq({correct: false, error: "Document type field required!"})
+  end
+
   it 'check multiple documents correctly' do
     expect(checker.check_many([{type: :inn, content: "7743013901"}, {type: :bik, content: "123456?!@"}])).to eq [{type: :inn, content: "7743013901", correct: true, error: ""}, {type: :bik, content: "123456?!@", correct: false, error: ""}]
   end
