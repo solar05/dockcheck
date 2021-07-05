@@ -4,17 +4,22 @@ require "#{__dir__}/dockhelper.rb"
 
 class DockCheck::Ogrn
 
-  def self.check(ogrn, _)
+  def self.check(document)
+    ogrn = document[:content]
+
     case ogrn.length
     when 13
-      if DockHelper.only_digits?(ogrn)
-        ogrn_valid?(ogrn)
-      else
-        false
-      end
+      document[:correct] =
+        if DockHelper.only_digits?(ogrn)
+          ogrn_valid?(ogrn)
+        else
+          false
+        end
     else
-      raise StandardError.new 'Incorrect ogrn numbers count!'
+      document[:error] = 'Incorrect ogrn numbers count!'
     end
+
+    document
   end
 
   def self.name

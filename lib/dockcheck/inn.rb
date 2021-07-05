@@ -7,16 +7,19 @@ class DockCheck::Inn
   @@twelve_digits_first_map = [7, 2, 4, 10, 3, 5, 9, 4, 6, 8]
   @@twelve_digits_second_map = [3, 7, 2, 4, 10, 3, 5, 9, 4, 6, 8]
 
-  def self.check(numbers, _)
-    inn = DockHelper.numberize_document(numbers)
+  def self.check(document)
+    inn = DockHelper.numberize_document(document[:content])
+
     case inn.count
     when 10
-      ten_digit_inn_valid?(inn)
+      document[:correct] = ten_digit_inn_valid?(inn)
     when 12
-      twelve_digit_inn_valid?(inn)
+      document[:correct] = twelve_digit_inn_valid?(inn)
     else
-      raise StandardError.new 'Incorrect inn numbers count!'
+      document[:error] = 'Incorrect inn numbers count!'
     end
+
+    document
   end
 
   def self.name

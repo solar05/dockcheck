@@ -4,17 +4,22 @@ require "#{__dir__}/dockhelper.rb"
 
 class DockCheck::Ogrnip
 
-  def self.check(ogrnip, _)
+  def self.check(document)
+    ogrnip = document[:content]
+
     case ogrnip.length
     when 15
-      if DockHelper.only_digits?(ogrnip)
-        ogrnip_valid?(ogrnip)
-      else
-        false
-      end
+      document[:correct] =
+        if DockHelper.only_digits?(ogrnip)
+          ogrnip_valid?(ogrnip)
+        else
+          false
+        end
     else
-      raise StandardError.new 'Incorrect ogrnip numbers count!'
+      document[:error] = 'Incorrect ogrnip numbers count!'
     end
+
+    document
   end
 
   def self.name

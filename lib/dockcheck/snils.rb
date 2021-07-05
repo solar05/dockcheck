@@ -5,15 +5,18 @@ require "#{__dir__}/dockhelper.rb"
 class DockCheck::Snils
   @@coefficients_map = [9, 8, 7, 6, 5, 4, 3, 2, 1]
 
-  def self.check(numbers, _)
-    snils = DockHelper.numberize_document(numbers)
+  def self.check(document)
+    snils = DockHelper.numberize_document(document[:content])
+
     case snils.count
     when 11
-      last_digits = numbers.slice(9, 10).to_i
-      snils_valid?(snils, last_digits)
+      last_digits = document[:content].slice(9, 10).to_i
+      document[:correct] = snils_valid?(snils, last_digits)
     else
-      raise StandardError.new 'Incorrect snils numbers count!'
+      document[:error] = 'Incorrect snils numbers count!'
     end
+
+    document
   end
 
   def self.name

@@ -10,4 +10,11 @@ class DockHelper
     document.scan(/\D/).empty?
   end
 
+  def self.prepare_doc(doc)
+    new_data = doc
+    new_data[:correct] = false
+    new_data[:error] = ""
+    new_data
+  end
+
 end

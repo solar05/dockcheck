@@ -1,45 +1,35 @@
 # frozen_string_literal: true
 
 class DockCheck
-  @current_checker
   @checkers_map
 
-  def initialize(checker = :inn)
+  def initialize()
     @checkers_map = {inn: Inn, snils: Snils, bik: Bik, kpp: Kpp, ogrnip: Ogrnip, ogrn: Ogrn}
-    dispatch(checker)
     self
   end
 
-  def check(numbers, *other_data)
-    @current_checker.check(numbers, *other_data)
+  def check(data)
+    doc = DockHelper.prepare_doc(data)
+    checker = doc[:type]
+    if @checkers_map.key?(checker.to_sym)
+      @checkers_map[checker].check(doc)
+    else
+      raise 'Incorrect checker!'
+    end
   end
 
   def check_many(documents)
     documents.each do |document|
       checker = document[:type]
-      doc = document[:content]
-      extra = document[:extra]
-      document[:correct] = @checkers_map[checker].check(doc, extra)
+      doc = DockHelper.prepare_doc(document)
+      @checkers_map[checker].check(doc)
     end
   end
 
-  def change_checker(checker)
-    dispatch(checker)
-    self
+  def list_checkers
+    @checkers_map.map { |checker| checker.last.name }
   end
 
-  def current_checker
-    @current_checker.name()
-  end
-
-  private
-  def dispatch(checker)
-    if @checkers_map.key?(checker.to_sym)
-      @current_checker = @checkers_map[checker]
-    else
-      raise 'Incorrect checker!'
-    end
-  end
 end
 
 Dir[File.join(__dir__, 'dockcheck', '*.rb')].each { |file| require file }

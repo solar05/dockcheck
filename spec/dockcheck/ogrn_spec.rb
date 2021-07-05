@@ -1,18 +1,18 @@
 require 'spec_helper'
 
 RSpec.describe DockCheck::Ogrn do
-  let(:checker) { DockCheck.new(:ogrn) }
-  let(:valid_ogrnip) { "1137746185818" }
-  let(:invalid_ogrnip_1) { "1234567891234" }
-  let(:invalid_ogrnip_2) { "a123fv4131234" }
+  let(:checker) { DockCheck.new() }
+  let(:valid_ogrnip) { {type: :ogrn, content: "1137746185818"} }
+  let(:invalid_ogrnip_1) { {type: :ogrn, content: "1234567891234"} }
+  let(:invalid_ogrnip_2) { {type: :ogrn, content: "a123fv4131234"} }
 
   it "checks ogrn correctly" do
-    expect(checker.check(valid_ogrnip, [])).to be true
-    expect(checker.check(invalid_ogrnip_1, [])).to be false
-    expect(checker.check(invalid_ogrnip_2, [])).to be false
+    expect(checker.check(valid_ogrnip)).to eq({:type=>:ogrn, :content=>"1137746185818", :error=>"", :correct=>true})
+    expect(checker.check(invalid_ogrnip_1)).to eq({:type=>:ogrn, :content=>"1234567891234", :correct=>false, :error=>""})
+    expect(checker.check(invalid_ogrnip_2)).to eq({:type=>:ogrn, :content=>"a123fv4131234", :correct=>false, :error=>""})
   end
 
-  it "throws exception when length invalid" do
-    expect{ checker.check("880", []) }.to raise_error 'Incorrect ogrn numbers count!'
+  it "throws error when length invalid" do
+    expect(checker.check({:type=>:ogrn, :content=>"880"})).to eq({:content=>"880", :correct=>false, :error=>"Incorrect ogrn numbers count!", :type=>:ogrn})
   end
 end

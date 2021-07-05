@@ -1,21 +1,19 @@
 require 'spec_helper'
 
 RSpec.describe DockCheck do
-  let(:checker) { DockCheck.new(:snils) }
+  let(:checker) { DockCheck.new() }
 
   it 'check and swaps correctly' do
-    expect(checker.check("12345678911", [])).to be false
+    expect(checker.check({type: :inn, content: "7743013901"})).to eq({type: :inn, content: "7743013901", error: "", correct: true})
 
-    checker.change_checker(:snils)
-
-    expect(checker.check("12345434343", [])).to be false
+    expect(checker.check({type: :snils, content: "12345678901"})).to eq({type: :snils, content: "12345678901", correct: false, error: ""})
   end
 
-  it 'return name of current checker' do
-    expect(checker.current_checker).to be :snils
+  it 'return list of checkers name' do
+    expect(checker.list_checkers).to_not be_empty
   end
 
   it 'check multiple documents correctly' do
-    expect(checker.check_many([{type: :inn, content: "7743013901", extra: ""}, {type: :bik, content: "123456?!@", extra: ""}])).to eq [{type: :inn, content: "7743013901", extra: "", correct: true}, {type: :bik, content: "123456?!@", extra: "", correct: false}]
+    expect(checker.check_many([{type: :inn, content: "7743013901"}, {type: :bik, content: "123456?!@"}])).to eq [{type: :inn, content: "7743013901", correct: true, error: ""}, {type: :bik, content: "123456?!@", correct: false, error: ""}]
   end
 end

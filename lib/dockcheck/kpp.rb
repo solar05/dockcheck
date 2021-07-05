@@ -2,13 +2,17 @@
 
 class DockCheck::Kpp
 
-  def self.check(kpp, _)
+  def self.check(document)
+    kpp = document[:content]
+
     case kpp.length
     when 9
-      kpp_valid?(kpp)
+      document[:correct] = kpp_valid?(kpp)
     else
-      raise StandardError.new 'Incorrect kpp numbers count!'
+      document[:error] = 'Incorrect kpp numbers count!'
     end
+
+    document
   end
 
   def self.name
