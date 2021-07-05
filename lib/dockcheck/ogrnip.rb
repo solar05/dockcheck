@@ -4,7 +4,7 @@ require "#{__dir__}/dockhelper.rb"
 
 class DockCheck::Ogrnip
 
-  def check(ogrnip, _)
+  def self.check(ogrnip, _)
     case ogrnip.length
     when 15
       if DockHelper.only_digits?(ogrnip)
@@ -17,13 +17,13 @@ class DockCheck::Ogrnip
     end
   end
 
-  def name
+  def self.name
     :ogrnip
   end
 
   private
 
-  def ogrnip_valid?(ogrnip)
+  def self.ogrnip_valid?(ogrnip)
     first_code = ogrnip[0..13].to_i
     second_code = (first_code / 13).floor * 13
     result_sum = (first_code - second_code) % 10

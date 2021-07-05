@@ -7,7 +7,7 @@ class DockCheck::Inn
   @@twelve_digits_first_map = [7, 2, 4, 10, 3, 5, 9, 4, 6, 8]
   @@twelve_digits_second_map = [3, 7, 2, 4, 10, 3, 5, 9, 4, 6, 8]
 
-  def check(numbers, _)
+  def self.check(numbers, _)
     inn = DockHelper.numberize_document(numbers)
     case inn.count
     when 10
@@ -19,30 +19,30 @@ class DockCheck::Inn
     end
   end
 
-  def name
+  def self.name
     :inn
   end
 
   private
 
-  def control_sum_calc(inn, coefficients)
+  def self.control_sum_calc(inn, coefficients)
     inn
       .zip(coefficients)
       .filter { |(a, b)| !b.nil? }
       .reduce(0) { |acc, (a, b)| a * b + acc }
   end
 
-  def sum_div(number)
+  def self.sum_div(number)
     number % 11 % 10
   end
 
-  def ten_digit_inn_valid?(inn)
+  def self.ten_digit_inn_valid?(inn)
     last_number = inn.last
     control_sum = control_sum_calc(inn, @@ten_digits_map)
     last_number == sum_div(control_sum)
   end
 
-  def twelve_digit_inn_valid?(inn)
+  def self.twelve_digit_inn_valid?(inn)
     last_number = inn.last
     penult_number = inn.fetch(10)
 

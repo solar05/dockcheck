@@ -19,7 +19,7 @@ class DockCheck
       checker = document[:type]
       doc = document[:content]
       extra = document[:extra]
-      document[:correct] = @checkers_map[checker].new.check(doc, extra)
+      document[:correct] = @checkers_map[checker].check(doc, extra)
     end
   end
 
@@ -35,7 +35,7 @@ class DockCheck
   private
   def dispatch(checker)
     if @checkers_map.key?(checker.to_sym)
-      @current_checker = @checkers_map[checker].new
+      @current_checker = @checkers_map[checker]
     else
       raise 'Incorrect checker!'
     end

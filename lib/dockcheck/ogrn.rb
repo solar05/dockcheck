@@ -4,7 +4,7 @@ require "#{__dir__}/dockhelper.rb"
 
 class DockCheck::Ogrn
 
-  def check(ogrn, _)
+  def self.check(ogrn, _)
     case ogrn.length
     when 13
       if DockHelper.only_digits?(ogrn)
@@ -17,13 +17,13 @@ class DockCheck::Ogrn
     end
   end
 
-  def name
+  def self.name
     :ogrn
   end
 
   private
 
-  def ogrn_valid?(ogrn)
+  def self.ogrn_valid?(ogrn)
     first_code = ogrn[0..12].to_i
     second_code = (first_code / 11).floor * 11
     result_sum = (first_code - second_code) % 10

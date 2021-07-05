@@ -4,7 +4,7 @@ require "#{__dir__}/dockhelper.rb"
 
 class DockCheck::Bik
 
-  def check(bik, _)
+  def self.check(bik, _)
     case bik.length
     when 9
       DockHelper.only_digits?(bik)
@@ -13,7 +13,7 @@ class DockCheck::Bik
     end
   end
 
-  def name
+  def self.name
     :bik
   end
 

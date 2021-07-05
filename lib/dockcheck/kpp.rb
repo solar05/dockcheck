@@ -2,7 +2,7 @@
 
 class DockCheck::Kpp
 
-  def check(kpp, _)
+  def self.check(kpp, _)
     case kpp.length
     when 9
       kpp_valid?(kpp)
@@ -11,13 +11,13 @@ class DockCheck::Kpp
     end
   end
 
-  def name
+  def self.name
     :kpp
   end
 
   private
 
-  def kpp_valid?(kpp)
+  def self.kpp_valid?(kpp)
     !!(kpp =~ /^[0-9]{4}[0-9A-Z]{2}[0-9]{3}$/)
   end
 end
