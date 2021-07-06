@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'dockcheck'
-  s.version     = '2.0.2'
+  s.version     = '2.0.3'
   s.summary     = "Document checksum validator."
   s.description = "A simple document checksum validator"
   s.authors     = ["Artem Solomatin"]
@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
                    "lib/dockcheck/dockhelper.rb"
                   ]
   s.require_paths = ["lib"]
-  s.required_ruby_version = Gem::Requirement.new(">= 2.5.0")
+  s.required_ruby_version = Gem::Requirement.new(">= 2.6.0")
   s.add_development_dependency "rspec"
   s.homepage    =
     'https://rubygems.org/gems/dockcheck'
