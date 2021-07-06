@@ -9,7 +9,24 @@ class DockCheck
   end
 
   def check(data)
-    doc = DockHelper.prepare_doc(data)
+    document = DockHelper.prepare_doc(data)
+    check_doc(document)
+  end
+
+  def check_many(documents)
+    documents.each do |document|
+      doc = DockHelper.prepare_doc(document)
+      check_doc(doc)
+    end
+  end
+
+  def list_checkers
+    @checkers_map.map { |checker| checker.last.name }
+  end
+
+  private
+
+  def check_doc(doc)
     checker = doc[:type]
     result = doc
 
@@ -28,18 +45,6 @@ class DockCheck
     end
 
     result
-  end
-
-  def check_many(documents)
-    documents.each do |document|
-      checker = document[:type]
-      doc = DockHelper.prepare_doc(document)
-      @checkers_map[checker].check(doc)
-    end
-  end
-
-  def list_checkers
-    @checkers_map.map { |checker| checker.last.name }
   end
 
 end
