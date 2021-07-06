@@ -7,12 +7,12 @@ RSpec.describe DockCheck::Ogrnip do
   let(:invalid_ogrnip_2) { {type: :ogrnip, content: "a123fv413123456"} }
 
   it "checks ogrnip correctly" do
-    expect(checker.check(valid_ogrnip)).to eq({:type=>:ogrnip, :content=>"113774618581835", :correct=>true, :error=>""})
-    expect(checker.check(invalid_ogrnip_1)).to eq({:type=>:ogrnip, :content=>"123456789123456", :correct=>false, :error=>""})
-    expect(checker.check(invalid_ogrnip_2)).to eq({:type=>:ogrnip, :content=>"a123fv413123456", :correct=>false, :error=>""})
+    expect(checker.check(valid_ogrnip)).to eq({type: :ogrnip, content: "113774618581835", correct: true, error: ""})
+    expect(checker.check(invalid_ogrnip_1)).to eq({type: :ogrnip, content: "123456789123456", correct: false, error: ""})
+    expect(checker.check(invalid_ogrnip_2)).to eq({type: :ogrnip, content: "a123fv413123456", correct: false, error: ""})
   end
 
   it "throws when length invalid" do
-    expect(checker.check({:type=>:ogrnip, :content=>"880"})).to eq({:type=>:ogrnip, :content=>"880", :correct=>false, :error=>'Incorrect ogrnip numbers count!'})
+    expect(checker.check({type: :ogrnip, content: "880"})).to eq({type: :ogrnip, content: "880", correct: false, error: 'Incorrect ogrnip numbers count!'})
   end
 end
