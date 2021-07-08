@@ -24,15 +24,17 @@ Output structure contains input data and some additional fields:
 - `correct # validation result`
 
 #### Examples
-`checker = DockCheck.new()`  
+```Ruby
+checker = DockCheck.new()  
 
-`checker.check({type: :inn, content: "7743013901"}) # => {type: :inn, content: "7743013901", correct: true, error: ""}`
+checker.check({type: :inn, content: "7743013901"}) # => {type: :inn, content: "7743013901", correct: true, error: ""}
 
-`checker.check({type: :inn, content: "8800555"}) # => {type: :inn, content: "8800555", correct: false, error: 'Incorrect inn numbers count!'}`
+checker.check({type: :inn, content: "8800555"}) # => {type: :inn, content: "8800555", correct: false, error: 'Incorrect inn numbers count!'}
 
-`checker.check({type: :snils, content: "12345678901"}) # => {type: :snils, content: "12345678901", correct: false, error: ""}`
+checker.check({type: :snils, content: "12345678901"}) # => {type: :snils, content: "12345678901", correct: false, error: ""}
 
-`checker.list_checkers # => [:inn, :snils, :bik, :kpp, :ogrnip, :ogrn]`
+checker.list_checkers # => [:inn, :snils, :bik, :kpp, :ogrnip, :ogrn]
 
-`checker.check_many([{type: :inn, content: "7743013901"}, {type: :bik, content: "123456?!@"}])`
-`# => [{type: :inn, content: "7743013901", correct: true, error: ""}, {type: :bik, content: "123456?!@", correct: false, error: ""}]`
+checker.check_many([{type: :inn, content: "7743013901"}, {type: :bik, content: "123456?!@"}])
+# => [{type: :inn, content: "7743013901", correct: true, error: ""}, {type: :bik, content: "123456?!@", correct: false, error: ""}]
+```
