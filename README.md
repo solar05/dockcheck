@@ -15,13 +15,13 @@ or using Gemfile `gem 'dockcheck', '~> 2.0'`
 
 ### Validation structure
 For input use Hashmap with following stucture:
-- `type    # type of document, required, symbol or string`
-- `content # document numbers, required, string`
-- `extra   # extra data of document, optional, string`
+- `type    - type of document, required, symbol or string`
+- `content - document numbers, required, string`
+- `extra   - extra data of document, optional, string`
 
 Output structure contains input data and some additional fields:
-- `error   # validation error`
-- `correct # validation result`
+- `error   - validation error`
+- `correct - validation result`
 
 #### Examples
 ```Ruby
