@@ -3,15 +3,14 @@
 require "#{__dir__}/dockhelper.rb"
 
 class DockCheck::Ogrnip
-
   def self.check(document)
-    ogrnip = document[:content]
+    data = document[:content]
 
-    case ogrnip.length
+    case data.length
     when 15
       document[:correct] =
-        if DockHelper.only_digits?(ogrnip)
-          ogrnip_valid?(ogrnip)
+        if DockHelper.only_digits?(data)
+          ogrnip_valid?(data)
         else
           false
         end
@@ -25,8 +24,6 @@ class DockCheck::Ogrnip
   def self.name
     :ogrnip
   end
-
-  private
 
   def self.ogrnip_valid?(ogrnip)
     first_code = ogrnip[0..13].to_i

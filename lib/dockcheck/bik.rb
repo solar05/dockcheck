@@ -3,7 +3,6 @@
 require "#{__dir__}/dockhelper.rb"
 
 class DockCheck::Bik
-
   def self.check(document)
     bik = document[:content]
 
@@ -20,5 +19,4 @@ class DockCheck::Bik
   def self.name
     :bik
   end
-
 end

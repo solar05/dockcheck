@@ -3,8 +3,8 @@
 class DockCheck
   @checkers_map
 
-  def initialize()
-    @checkers_map = {inn: Inn, snils: Snils, bik: Bik, kpp: Kpp, ogrnip: Ogrnip, ogrn: Ogrn}
+  def initialize
+    @checkers_map = { inn: Inn, snils: Snils, bik: Bik, kpp: Kpp, ogrnip: Ogrnip, ogrn: Ogrn }
     self
   end
 
@@ -30,23 +30,23 @@ class DockCheck
     checker = doc[:type]
     result = doc
 
-    if checker
-      if @checkers_map.key?(checker.to_sym)
-        if doc[:content]
-          result = @checkers_map[checker].check(doc)
-        else
-          result[:error] = 'Content field required!'
-        end
+    unless checker
+      result[:error] = 'Document type field required!'
+      return result
+    end
+
+    if @checkers_map.key?(checker.to_sym)
+      if doc[:content]
+        result = @checkers_map[checker].check(doc)
       else
-        result[:error] = 'Incorrect checker!'
+        result[:error] = 'Content field required!'
       end
     else
-      result[:error] = 'Document type field required!'
+      result[:error] = 'Incorrect checker!'
     end
 
     result
   end
-
 end
 
 Dir[File.join(__dir__, 'dockcheck', '*.rb')].each { |file| require file }

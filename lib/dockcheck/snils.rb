@@ -23,12 +23,10 @@ class DockCheck::Snils
     :snils
   end
 
-  private
-
   def self.control_sum_calc(inn, coefficients)
     inn
       .zip(coefficients)
-      .filter { |(a, b)| !b.nil? }
+      .filter { |(_a, b)| !b.nil? }
       .reduce(0) { |acc, (a, b)| a * b + acc }
   end
 

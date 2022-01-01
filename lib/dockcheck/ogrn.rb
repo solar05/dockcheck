@@ -3,7 +3,6 @@
 require "#{__dir__}/dockhelper.rb"
 
 class DockCheck::Ogrn
-
   def self.check(document)
     ogrn = document[:content]
 
@@ -25,8 +24,6 @@ class DockCheck::Ogrn
   def self.name
     :ogrn
   end
-
-  private
 
   def self.ogrn_valid?(ogrn)
     first_code = ogrn[0..12].to_i

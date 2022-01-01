@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class DockCheck::Kpp
-
   def self.check(document)
     kpp = document[:content]
 
@@ -18,8 +17,6 @@ class DockCheck::Kpp
   def self.name
     :kpp
   end
-
-  private
 
   def self.kpp_valid?(kpp)
     !!(kpp =~ /^[0-9]{4}[0-9A-Z]{2}[0-9]{3}$/)
