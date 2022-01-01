@@ -1,11 +1,8 @@
 # frozen_string_literal: true
 
 class DockCheck
-  @checkers_map
-
   def initialize
     @checkers_map = { inn: Inn, snils: Snils, bik: Bik, kpp: Kpp, ogrnip: Ogrnip, ogrn: Ogrn }
-    self
   end
 
   def check(data)
@@ -36,17 +33,22 @@ class DockCheck
     end
 
     if @checkers_map.key?(checker.to_sym)
-      if doc[:content]
-        result = @checkers_map[checker].check(doc)
-      else
-        result[:error] = 'Content field required!'
-      end
+      result = check_control_sum(result)
     else
       result[:error] = 'Incorrect checker!'
     end
 
     result
   end
+
+  def check_control_sum(data)
+    if data[:content]
+      @checkers_map[data[:type]].check(data)
+    else
+      data[:error] = 'Content field required!'
+      data
+    end
+  end
 end
 
-Dir[File.join(__dir__, 'dockcheck', '*.rb')].each { |file| require file }
+Dir[File.join(__dir__, 'dockcheck', '*.rb')].sort.each { |file| require file }

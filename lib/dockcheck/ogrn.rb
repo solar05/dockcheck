@@ -8,12 +8,7 @@ class DockCheck::Ogrn
 
     case ogrn.length
     when 13
-      document[:correct] =
-        if DockHelper.only_digits?(ogrn)
-          ogrn_valid?(ogrn)
-        else
-          false
-        end
+      document[:correct] = DockHelper.only_digits?(ogrn) ? ogrn_valid?(ogrn) : false
     else
       document[:error] = 'Incorrect ogrn numbers count!'
     end

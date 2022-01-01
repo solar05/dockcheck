@@ -3,7 +3,7 @@
 require "#{__dir__}/dockhelper.rb"
 
 class DockCheck::Snils
-  @@coefficients_map = [9, 8, 7, 6, 5, 4, 3, 2, 1]
+  @coefficients_map = [9, 8, 7, 6, 5, 4, 3, 2, 1]
 
   def self.check(document)
     snils = DockHelper.numberize_document(document[:content])
@@ -39,7 +39,7 @@ class DockCheck::Snils
   end
 
   def self.snils_valid?(snils, last_digits)
-    control_sum = control_sum_calc(snils, @@coefficients_map)
+    control_sum = control_sum_calc(snils, @coefficients_map)
     last_digits == check_control_sum(control_sum)
   end
 end

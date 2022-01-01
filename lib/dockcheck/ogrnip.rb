@@ -8,12 +8,7 @@ class DockCheck::Ogrnip
 
     case data.length
     when 15
-      document[:correct] =
-        if DockHelper.only_digits?(data)
-          ogrnip_valid?(data)
-        else
-          false
-        end
+      document[:correct] = DockHelper.only_digits?(data) ? ogrnip_valid?(data) : false
     else
       document[:error] = 'Incorrect ogrnip numbers count!'
     end

@@ -11,7 +11,7 @@ RSpec.describe DockCheck::Ogrnip do
   it 'checks ogrnip correctly' do
     expect(checker.check(valid_ogrnip)).to eq({ type: :ogrnip, content: '113774618581835', correct: true, error: '' })
     expect(checker.check(invalid_first_ogrnip)).to eq({ type: :ogrnip, content: '123456789123456', correct: false,
-                                                     error: '' })
+                                                        error: '' })
     expect(checker.check(invalid_second_ogrnip)).to eq({ type: :ogrnip, content: 'a123fv413123456', correct: false,
                                                          error: '' })
   end
