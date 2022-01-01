@@ -33,14 +33,11 @@ class DockCheck::Snils
   end
 
   def self.check_control_sum(control_sum)
-    if control_sum < 100
-      control_sum
-    elsif control_sum == 100
-      0
-    else
-      rem = control_sum % 101
-      rem == 100 ? 0 : rem
-    end
+    return control_sum if control_sum < 100
+    return 0 if control_sum == 100
+
+    rem = control_sum % 101
+    rem == 100 ? 0 : rem
   end
 
   def self.snils_valid?(snils, last_digits)
