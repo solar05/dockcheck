@@ -23,6 +23,7 @@ class DockCheck::Ogrn
   def self.ogrn_valid?(ogrn)
     first_code = ogrn[0..12].to_i
     second_code = (first_code / 11).floor * 11
+    
     result_sum = (first_code - second_code) % 10
     result_sum == ogrn[13].to_i
   end

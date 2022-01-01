@@ -15,8 +15,9 @@ class DockCheck::Ogrnip
   def self.ogrnip_valid?(ogrnip)
     first_code = ogrnip[0..13].to_i
     second_code = (first_code / 13).floor * 13
-    result_sum = (first_code - second_code) % 10
-    result_sum == ogrnip[14].to_i
+    
+    sum = (first_code - second_code) % 10
+    sum == ogrnip[14].to_i
   end
 
   def self.validate_ogrnip(data)
