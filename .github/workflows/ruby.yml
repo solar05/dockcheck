@@ -17,6 +17,8 @@ jobs:
   test:
 
     runs-on: ubuntu-latest
+    env:
+      CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
     strategy:
       matrix:
         ruby-version: ['2.6', '2.7', '3.0']
