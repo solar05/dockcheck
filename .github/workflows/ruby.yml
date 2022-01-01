@@ -23,9 +23,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-      env:
-        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
     - name: Set up Ruby
     # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
     # change this to (see https://github.com/ruby/setup-ruby#versioning):
