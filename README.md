@@ -1,4 +1,4 @@
-# dockcheck [![Gem Version](https://badge.fury.io/rb/dockcheck.svg)](https://badge.fury.io/rb/dockcheck) [![Tests](https://github.com/solar05/dockcheck/actions/workflows/ruby.yml/badge.svg)](https://github.com/solar05/dockcheck/actions/workflows/ruby.yml)
+# dockcheck [![Gem Version](https://badge.fury.io/rb/dockcheck.svg)](https://badge.fury.io/rb/dockcheck) [![Tests](https://github.com/solar05/dockcheck/actions/workflows/ruby.yml/badge.svg)](https://github.com/solar05/dockcheck/actions/workflows/ruby.yml) [![Maintainability](https://api.codeclimate.com/v1/badges/78eabd3ae6746960f318/maintainability)](https://codeclimate.com/github/solar05/dockcheck/maintainability)
 Simple gem, that validates document check sum.
 
 ## Install
