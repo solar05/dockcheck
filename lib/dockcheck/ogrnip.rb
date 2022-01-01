@@ -4,15 +4,7 @@ require "#{__dir__}/dockhelper.rb"
 
 class DockCheck::Ogrnip
   def self.check(document)
-    data = document[:content]
-
-    case data.length
-    when 15
-      document[:correct] = DockHelper.only_digits?(data) ? ogrnip_valid?(data) : false
-    else
-      document[:error] = 'Incorrect ogrnip numbers count!'
-    end
-
+    validate_ogrnip(document)
     document
   end
 
@@ -25,5 +17,15 @@ class DockCheck::Ogrnip
     second_code = (first_code / 13).floor * 13
     result_sum = (first_code - second_code) % 10
     result_sum == ogrnip[14].to_i
+  end
+
+  def self.validate_ogrnip(data)
+    ogrnip = data[:content]
+    case ogrnip.length
+    when 15
+      data[:correct] = DockHelper.only_digits?(ogrnip) ? ogrnip_valid?(ogrnip) : false
+    else
+      data[:error] = 'Incorrect ogrnip numbers count!'
+    end
   end
 end
