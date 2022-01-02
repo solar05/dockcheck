@@ -1,11 +1,13 @@
 PATH
   remote: .
   specs:
-    dockcheck (2.0.3)
+    dockcheck (2.0.4)
 
 GEM
   remote: https://rubygems.org/
   specs:
+    codecov (0.6.0)
+      simplecov (>= 0.15, < 0.22)
     diff-lcs (1.4.4)
     docile (1.4.0)
     rake (12.3.3)
@@ -33,6 +35,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  codecov
   dockcheck!
   rake (~> 12.0)
   rspec (~> 3.0)
